@@ -60,7 +60,7 @@ export const App = () => {
   const [currentUserId, setCurrentUserId] = useState('');
   const [filterQuery, setFiterQuery] = useState('');
   const [currentCategory, setCurrentCategory] = useState('');
-  const [sort, setSort] = useState(true);
+  const [sort] = useState(false);
   const [isReverse, setIsReverse] = useState(false);
 
   const visibleProducts = filteredProducts(
@@ -81,12 +81,11 @@ export const App = () => {
           <nav className="panel">
             <p className="panel-heading">Filters</p>
 
-            <p
-              className={`panel-tabs has-text-weight-bold ${currentUserId === '' ? 'is-success' : ''}`}
-            >
+            <p className={`panel-tabs has-text-weight-bold `}>
               <a
                 data-cy="FilterAllUsers"
                 href="#/"
+                className={`panel-tabs has-text-weight-bold ${currentUserId === '' ? 'is-active' : ''}`}
                 onClick={() => setCurrentUserId('')}
               >
                 All
@@ -117,15 +116,17 @@ export const App = () => {
                   <i className="fas fa-search" aria-hidden="true" />
                 </span>
 
-                <span className="icon is-right">
-                  {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                  <button
-                    data-cy="ClearButton"
-                    type="button"
-                    className="delete"
-                    onClick={() => setFiterQuery('')}
-                  />
-                </span>
+                {filterQuery && (
+                  <span className="icon is-right">
+                    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                    <button
+                      data-cy="ClearButton"
+                      type="button"
+                      className="delete"
+                      onClick={() => setFiterQuery('')}
+                    />
+                  </span>
+                )}
               </p>
             </div>
 
@@ -133,7 +134,7 @@ export const App = () => {
               <a
                 href="#/"
                 data-cy="AllCategories"
-                className="button is-success mr-6 is-outlined"
+                className={`button is-success mr-6  ${currentCategory === '' ? '' : 'is-outlined'} `}
                 onClick={() => setCurrentCategory('')}
               >
                 All
@@ -181,7 +182,7 @@ export const App = () => {
                   <th>
                     <span className="is-flex is-flex-wrap-nowrap">
                       ID
-                      <a href="#/" onClick={() => setSort(!sort)}>
+                      <a href="#/">
                         <span className="icon">
                           <i data-cy="SortIcon" className="fas fa-sort" />
                         </span>
@@ -192,7 +193,7 @@ export const App = () => {
                   <th>
                     <span className="is-flex is-flex-wrap-nowrap">
                       Product
-                      <a href="#/" onClick={() => setSort(!sort)}>
+                      <a href="#/">
                         <span className="icon">
                           <i data-cy="SortIcon" className="fas fa-sort-down" />
                         </span>
@@ -203,7 +204,7 @@ export const App = () => {
                   <th>
                     <span className="is-flex is-flex-wrap-nowrap">
                       Category
-                      <a href="#/" onClick={() => setSort(!sort)}>
+                      <a href="#/">
                         <span className="icon">
                           <i data-cy="SortIcon" className="fas fa-sort-up" />
                         </span>
@@ -214,7 +215,7 @@ export const App = () => {
                   <th>
                     <span className="is-flex is-flex-wrap-nowrap">
                       User
-                      <a href="#/" onClick={() => setSort(!sort)}>
+                      <a href="#/">
                         <span className="icon">
                           <i data-cy="SortIcon" className="fas fa-sort" />
                         </span>

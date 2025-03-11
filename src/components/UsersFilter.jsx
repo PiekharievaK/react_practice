@@ -1,7 +1,7 @@
 export const UsersFilter = ({ user, currentUserId, onClick }) => {
   return (
     <a
-      data-cy="FilterAllUsers"
+      data-cy="FilterUser"
       href="#/"
       onClick={() => onClick(user.id)}
       className={`${currentUserId === user.id ? 'is-active' : ''}`}
