@@ -59,7 +59,7 @@ const filteredProducts = (
 export const App = () => {
   const [currentUserId, setCurrentUserId] = useState('');
   const [filterQuery, setFiterQuery] = useState('');
-  const [currentCategory, setCurrentCategory] = useState([]);
+  const [currentCategories, setcurrentCategories] = useState([]);
   const [sort] = useState(false);
   const [isReverse, setIsReverse] = useState(false);
 
@@ -67,7 +67,7 @@ export const App = () => {
     products,
     currentUserId,
     filterQuery,
-    currentCategory,
+    currentCategories,
     sort,
     isReverse,
   );
@@ -134,8 +134,8 @@ export const App = () => {
               <a
                 href="#/"
                 data-cy="AllCategories"
-                className={`button is-success mr-6  ${currentCategory.length < 1 ? '' : 'is-outlined'} `}
-                onClick={() => setCurrentCategory('')}
+                className={`button is-success mr-6  ${currentCategories.length < 1 ? '' : 'is-outlined'} `}
+                onClick={() => setcurrentCategories('')}
               >
                 All
               </a>
@@ -143,8 +143,8 @@ export const App = () => {
                 <CategoriesFilter
                   category={category}
                   key={category.id}
-                  currentCategory={currentCategory}
-                  onClick={setCurrentCategory}
+                  currentCategories={currentCategories}
+                  onClick={setcurrentCategories}
                 />
               ))}
             </div>
@@ -157,7 +157,7 @@ export const App = () => {
                 onClick={() => {
                   setCurrentUserId('');
                   setFiterQuery('');
-                  setCurrentCategory('');
+                  setcurrentCategories('');
                   setIsReverse(false);
                 }}
               >

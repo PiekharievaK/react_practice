@@ -1,12 +1,14 @@
-export const CategoriesFilter = ({ category, currentCategory, onClick }) => {
+export const CategoriesFilter = ({ category, currentCategories, onClick }) => {
+  const isInclude = currentCategories.includes(category.id);
+
   return (
     <a
       data-cy="Category"
-      className={`button mr-2 my-1 ${currentCategory.includes(category.id) ? 'is-info' : ''}`}
+      className={`button mr-2 my-1 ${isInclude ? 'is-info' : ''}`}
       href="#/"
       onClick={() =>
         onClick(prev => {
-          if (prev.includes(category.id)) {
+          if (isInclude) {
             return prev.filter(item => item !== category.id);
           }
 
