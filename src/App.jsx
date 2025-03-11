@@ -85,7 +85,7 @@ export const App = () => {
               <a
                 data-cy="FilterAllUsers"
                 href="#/"
-                className={`panel-tabs has-text-weight-bold ${currentUserId === '' ? 'is-active' : ''}`}
+                className={currentUserId === '' ? 'is-active' : ''}
                 onClick={() => setCurrentUserId('')}
               >
                 All
@@ -135,7 +135,7 @@ export const App = () => {
                 href="#/"
                 data-cy="AllCategories"
                 className={`button is-success mr-6  ${currentCategories.length < 1 ? '' : 'is-outlined'} `}
-                onClick={() => setcurrentCategories('')}
+                onClick={() => setcurrentCategories([])}
               >
                 All
               </a>
@@ -157,7 +157,7 @@ export const App = () => {
                 onClick={() => {
                   setCurrentUserId('');
                   setFiterQuery('');
-                  setcurrentCategories('');
+                  setcurrentCategories([]);
                   setIsReverse(false);
                 }}
               >
