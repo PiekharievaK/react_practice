@@ -39,10 +39,10 @@ const filteredProducts = (
     });
   }
 
-  if (categoryId !== '') {
-    visibleProducts = visibleProducts.filter(
-      item => item.categoryId === categoryId,
-    );
+  if (categoryId.length > 0) {
+    visibleProducts = visibleProducts.filter(item => {
+      return categoryId.includes(item.categoryId);
+    });
   }
 
   // if (sorted) {
@@ -59,7 +59,7 @@ const filteredProducts = (
 export const App = () => {
   const [currentUserId, setCurrentUserId] = useState('');
   const [filterQuery, setFiterQuery] = useState('');
-  const [currentCategory, setCurrentCategory] = useState('');
+  const [currentCategory, setCurrentCategory] = useState([]);
   const [sort] = useState(false);
   const [isReverse, setIsReverse] = useState(false);
 
@@ -134,7 +134,7 @@ export const App = () => {
               <a
                 href="#/"
                 data-cy="AllCategories"
-                className={`button is-success mr-6  ${currentCategory === '' ? '' : 'is-outlined'} `}
+                className={`button is-success mr-6  ${currentCategory.length < 1 ? '' : 'is-outlined'} `}
                 onClick={() => setCurrentCategory('')}
               >
                 All
